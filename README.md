@@ -12,7 +12,7 @@
 
 <br><br>
 
-<img src="https://skillicons.dev/icons?i=python,java,html,css,js,ts,react,nodejs,docker,bash,linux,git,vscode,figma&perline=14" alt="Tech Arsenal" />
+<img src="https://skillicons.dev/icons?i=python,c,r,java,js,ts,html,css,react,nodejs,postgres,sqlite,docker,bash,linux,kali,git,github,vscode,figma,postman&perline=7" alt="Tech Arsenal" />
 
 <br>
 
@@ -26,7 +26,7 @@ São simplesmente **colinhas** de códigos e atalhos das tecnologias do meu Tech
 
 > 💡 **Como usar:** clique na seta ▶️ de cada tecnologia para abrir a colinha.
 >
-> 💪 = tecnologia que eu já domino mais &nbsp;|&nbsp; 🌱 = ainda aprendendo
+> 💪 = já domino mais &nbsp;|&nbsp; 🌱 = ainda aprendendo &nbsp;|&nbsp; 😨 = socorro, tenho medo!
 
 <br>
 
@@ -138,6 +138,228 @@ hashlib.sha256(b"texto").hexdigest()
 ```
 
 > ⚠️ Use ferramentas de análise de vulnerabilidades apenas em sistemas seus ou com autorização expressa.
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" width="22" height="22" alt="C" />&nbsp; <b>C</b> 😨</summary>
+
+<br>
+
+> Perto do metal: ponteiros, memória e muito cuidado com buffer overflow
+
+### Estrutura básica
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    printf("Olá, mundo!\n");
+    return 0;
+}
+```
+
+```bash
+gcc main.c -o programa                    # compila
+gcc -Wall -Wextra -g main.c -o programa   # com avisos e símbolos de debug
+./programa                                # executa
+```
+
+### Tipos e entrada/saída
+
+```c
+int idade = 20;
+float peso = 55.5f;
+double altura = 1.65;
+char letra = 'A';
+char nome[50] = "Fran";
+
+printf("Idade: %d\n", idade);
+scanf("%d", &idade);
+fgets(nome, sizeof(nome), stdin);   // lê texto com segurança
+```
+
+| Formato | Tipo |
+| --- | --- |
+| `%d` | int |
+| `%f` | float / double |
+| `%c` | char |
+| `%s` | string |
+| `%p` | ponteiro |
+| `%x` | hexadecimal |
+
+### Controle de fluxo
+
+```c
+if (idade >= 18) { } else if (idade > 12) { } else { }
+
+for (int i = 0; i < 5; i++) { }
+while (condicao) { }
+do { } while (condicao);
+
+switch (opcao) {
+    case 1: break;
+    default: break;
+}
+```
+
+### Arrays e strings
+
+```c
+#include <string.h>
+
+int nums[5] = {1, 2, 3, 4, 5};
+
+strlen(texto);             // tamanho
+strcmp(a, b);              // 0 se iguais
+strncpy(destino, origem, sizeof(destino) - 1);
+strncat(destino, origem, sizeof(destino) - strlen(destino) - 1);
+```
+
+### Ponteiros
+
+```c
+int x = 10;
+int *p = &x;    // p guarda o endereço de x
+*p = 20;        // altera x pelo ponteiro
+```
+
+### Memória dinâmica
+
+```c
+#include <stdlib.h>
+
+int *v = malloc(10 * sizeof(int));
+if (v == NULL) {
+    return 1;       // sempre confira se alocou
+}
+v[0] = 5;
+free(v);            // libera a memória
+v = NULL;
+```
+
+### Struct e funções
+
+```c
+typedef struct {
+    char nome[50];
+    int idade;
+} Pessoa;
+
+int somar(int a, int b) {
+    return a + b;
+}
+
+Pessoa p = {"Fran", 20};
+printf("%s\n", p.nome);
+```
+
+> 🔒 **Segurança:** estouro de buffer é uma das falhas mais clássicas em C. Evite `gets()`, `strcpy()` e `sprintf()` sem limite. Prefira `fgets()`, `strncpy()` e `snprintf()`, e sempre confira os tamanhos.
+
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" width="22" height="22" alt="R" />&nbsp; <b>R</b> 😨</summary>
+
+<br>
+
+> Estatística e análise de dados com gráficos bonitos 📊
+
+### Básico
+
+```r
+x <- 10                    # atribuição
+nome <- "Fran"
+print(paste("Olá,", nome))
+
+class(x)                   # tipo do objeto
+is.numeric(x)
+```
+
+### Vetores
+
+```r
+v <- c(1, 2, 3, 4, 5)
+
+v[2]            # segundo elemento
+v[2:4]          # fatia
+v[v > 2]        # filtro
+length(v)
+sum(v); mean(v); median(v); sd(v)
+seq(1, 10, by = 2)
+rep("a", 3)
+```
+
+### Data frames
+
+```r
+df <- data.frame(
+  nome  = c("Ana", "Bia", "Cris"),
+  idade = c(20, 22, 19)
+)
+
+df$nome                # coluna
+df[1, ]                # linha 1
+df[df$idade > 19, ]    # filtro
+nrow(df); ncol(df)
+head(df); str(df); summary(df)
+```
+
+### Ler e salvar arquivos
+
+```r
+dados <- read.csv("dados.csv", stringsAsFactors = FALSE)
+write.csv(dados, "saida.csv", row.names = FALSE)
+```
+
+### Controle de fluxo e funções
+
+```r
+if (x > 5) {
+  print("maior")
+} else {
+  print("menor")
+}
+
+for (i in 1:5) print(i)
+
+dobro <- function(n) {
+  return(n * 2)
+}
+
+sapply(v, dobro)       # aplica em cada elemento
+```
+
+### Pacotes
+
+```r
+install.packages("dplyr")
+library(dplyr)
+
+dados %>%
+  filter(idade > 18) %>%
+  select(nome, idade) %>%
+  arrange(desc(idade))
+```
+
+### Gráficos
+
+```r
+plot(v)                        # base R
+hist(dados$idade)
+boxplot(dados$idade)
+
+library(ggplot2)
+ggplot(dados, aes(x = nome, y = idade)) +
+  geom_col(fill = "#8DA2F0") +
+  theme_minimal()
+```
+
 
 <br>
 
@@ -282,180 +504,6 @@ import java.util.Scanner;
 Scanner sc = new Scanner(System.in);
 String entrada = sc.nextLine();
 int numero = sc.nextInt();
-```
-
-<br>
-
-</details>
-
-<details>
-<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="22" height="22" alt="HTML5" />&nbsp; <b>HTML5</b> 💪</summary>
-
-<br>
-
-> O esqueleto de toda página web
-
-### Estrutura básica
-
-```html
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Título da página</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <script src="script.js"></script>
-  </body>
-</html>
-```
-
-### Tags mais usadas
-
-| Tag | Uso |
-| --- | --- |
-| `<h1>` a `<h6>` | Títulos |
-| `<p>` | Parágrafo |
-| `<a href="">` | Link |
-| `<img src="" alt="">` | Imagem |
-| `<ul>` / `<ol>` / `<li>` | Listas |
-| `<div>` / `<span>` | Contêineres (bloco / em linha) |
-| `<button>` | Botão |
-| `<table>`, `<tr>`, `<td>`, `<th>` | Tabelas |
-
-### Tags semânticas
-
-```html
-<header></header>
-<nav></nav>
-<main>
-  <section></section>
-  <article></article>
-  <aside></aside>
-</main>
-<footer></footer>
-```
-
-### Formulário
-
-```html
-<form action="/enviar" method="post">
-  <label for="nome">Nome</label>
-  <input type="text" id="nome" name="nome" required />
-
-  <input type="email" name="email" placeholder="seu@email.com" />
-  <input type="password" name="senha" />
-  <input type="checkbox" name="aceito" />
-  <input type="radio" name="opcao" value="a" />
-
-  <select name="curso">
-    <option value="ciber">Cibersegurança</option>
-  </select>
-
-  <textarea name="msg" rows="4"></textarea>
-  <button type="submit">Enviar</button>
-</form>
-```
-
-<br>
-
-</details>
-
-<details>
-<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="22" height="22" alt="CSS3" />&nbsp; <b>CSS3</b> 💪</summary>
-
-<br>
-
-> Onde a mágica (e o gradiente) acontece 🎨
-
-### Seletores
-
-```css
-p { }              /* tag */
-.classe { }        /* classe */
-#id { }            /* id */
-a:hover { }        /* pseudo-classe */
-p::first-line { }  /* pseudo-elemento */
-div > p { }        /* filho direto */
-div p { }          /* descendente */
-h1, h2 { }         /* agrupamento */
-input[type="text"] { }  /* atributo */
-```
-
-### Box model
-
-```css
-* {
-  box-sizing: border-box;
-}
-
-.caixa {
-  width: 300px;
-  padding: 16px;
-  border: 1px solid #ccc;
-  margin: 0 auto;
-}
-```
-
-### Flexbox
-
-```css
-.container {
-  display: flex;
-  flex-direction: row;          /* row | column */
-  justify-content: center;      /* eixo principal */
-  align-items: center;          /* eixo transversal */
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.item {
-  flex: 1;
-}
-```
-
-### Grid
-
-```css
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.grid-auto {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-```
-
-### Variáveis, media query e animação
-
-```css
-:root {
-  --cor-principal: #8b9ff0;
-}
-
-.botao {
-  background: var(--cor-principal);
-  transition: transform 0.2s;
-}
-.botao:hover {
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .grid { grid-template-columns: 1fr; }
-}
-
-@keyframes pulsar {
-  from { opacity: 1; }
-  to   { opacity: 0.4; }
-}
-.pulsando {
-  animation: pulsar 1s infinite alternate;
-}
 ```
 
 <br>
@@ -640,6 +688,180 @@ npx tsc --watch    # compila ao salvar
 </details>
 
 <details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="22" height="22" alt="HTML5" />&nbsp; <b>HTML5</b> 💪</summary>
+
+<br>
+
+> O esqueleto de toda página web
+
+### Estrutura básica
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Título da página</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+
+### Tags mais usadas
+
+| Tag | Uso |
+| --- | --- |
+| `<h1>` a `<h6>` | Títulos |
+| `<p>` | Parágrafo |
+| `<a href="">` | Link |
+| `<img src="" alt="">` | Imagem |
+| `<ul>` / `<ol>` / `<li>` | Listas |
+| `<div>` / `<span>` | Contêineres (bloco / em linha) |
+| `<button>` | Botão |
+| `<table>`, `<tr>`, `<td>`, `<th>` | Tabelas |
+
+### Tags semânticas
+
+```html
+<header></header>
+<nav></nav>
+<main>
+  <section></section>
+  <article></article>
+  <aside></aside>
+</main>
+<footer></footer>
+```
+
+### Formulário
+
+```html
+<form action="/enviar" method="post">
+  <label for="nome">Nome</label>
+  <input type="text" id="nome" name="nome" required />
+
+  <input type="email" name="email" placeholder="seu@email.com" />
+  <input type="password" name="senha" />
+  <input type="checkbox" name="aceito" />
+  <input type="radio" name="opcao" value="a" />
+
+  <select name="curso">
+    <option value="ciber">Cibersegurança</option>
+  </select>
+
+  <textarea name="msg" rows="4"></textarea>
+  <button type="submit">Enviar</button>
+</form>
+```
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="22" height="22" alt="CSS3" />&nbsp; <b>CSS3</b> 💪</summary>
+
+<br>
+
+> Onde a mágica (e o gradiente) acontece 🎨
+
+### Seletores
+
+```css
+p { }              /* tag */
+.classe { }        /* classe */
+#id { }            /* id */
+a:hover { }        /* pseudo-classe */
+p::first-line { }  /* pseudo-elemento */
+div > p { }        /* filho direto */
+div p { }          /* descendente */
+h1, h2 { }         /* agrupamento */
+input[type="text"] { }  /* atributo */
+```
+
+### Box model
+
+```css
+* {
+  box-sizing: border-box;
+}
+
+.caixa {
+  width: 300px;
+  padding: 16px;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+}
+```
+
+### Flexbox
+
+```css
+.container {
+  display: flex;
+  flex-direction: row;          /* row | column */
+  justify-content: center;      /* eixo principal */
+  align-items: center;          /* eixo transversal */
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.item {
+  flex: 1;
+}
+```
+
+### Grid
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.grid-auto {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+```
+
+### Variáveis, media query e animação
+
+```css
+:root {
+  --cor-principal: #8b9ff0;
+}
+
+.botao {
+  background: var(--cor-principal);
+  transition: transform 0.2s;
+}
+.botao:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+@keyframes pulsar {
+  from { opacity: 1; }
+  to   { opacity: 0.4; }
+}
+.pulsando {
+  animation: pulsar 1s infinite alternate;
+}
+```
+
+<br>
+
+</details>
+
+<details>
 <summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="22" height="22" alt="React" />&nbsp; <b>React</b></summary>
 
 <br>
@@ -793,6 +1015,183 @@ const porta = process.env.PORT || 3000;
 ```
 
 > 🔒 Nunca suba o arquivo `.env` para o GitHub. Adicione-o ao `.gitignore`.
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="22" height="22" alt="PostgreSQL" />&nbsp; <b>PostgreSQL</b> 😨</summary>
+
+<br>
+
+> Banco de dados relacional parrudo 🐘
+
+### Conectar (psql)
+
+```bash
+psql -U usuario -d banco -h localhost -p 5432
+```
+
+| Comando | Ação |
+| --- | --- |
+| `\l` | Lista os bancos |
+| `\c banco` | Conecta a um banco |
+| `\dt` | Lista as tabelas |
+| `\d tabela` | Descreve a tabela |
+| `\du` | Lista os usuários |
+| `\i arquivo.sql` | Executa um arquivo SQL |
+| `\q` | Sai |
+
+### Criar banco e tabela
+
+```sql
+CREATE DATABASE meu_banco;
+
+CREATE TABLE usuarios (
+    id         SERIAL PRIMARY KEY,
+    nome       VARCHAR(100) NOT NULL,
+    email      VARCHAR(150) UNIQUE NOT NULL,
+    criado_em  TIMESTAMP DEFAULT NOW()
+);
+```
+
+### CRUD
+
+```sql
+INSERT INTO usuarios (nome, email) VALUES ('Fran', 'fran@email.com');
+
+SELECT * FROM usuarios;
+SELECT nome FROM usuarios WHERE id = 1 ORDER BY nome LIMIT 10;
+
+UPDATE usuarios SET nome = 'Francyellen' WHERE id = 1;
+
+DELETE FROM usuarios WHERE id = 1;
+```
+
+> ⚠️ Sempre use `WHERE` em `UPDATE` e `DELETE`, ou você altera a tabela inteira.
+
+### JOIN e agregações
+
+```sql
+SELECT u.nome, p.titulo
+FROM usuarios u
+INNER JOIN posts p ON p.usuario_id = u.id;
+
+-- LEFT JOIN traz todos da esquerda, mesmo sem correspondência
+
+SELECT COUNT(*), AVG(idade), MAX(idade) FROM usuarios;
+
+SELECT cidade, COUNT(*)
+FROM usuarios
+GROUP BY cidade
+HAVING COUNT(*) > 5;
+```
+
+### Alterar estrutura e índices
+
+```sql
+ALTER TABLE usuarios ADD COLUMN idade INT;
+ALTER TABLE usuarios DROP COLUMN idade;
+DROP TABLE usuarios;
+
+CREATE INDEX idx_usuarios_email ON usuarios (email);
+```
+
+### Usuários e permissões
+
+```sql
+CREATE USER app_user WITH PASSWORD 'troque_esta_senha';
+GRANT SELECT, INSERT ON usuarios TO app_user;
+REVOKE INSERT ON usuarios FROM app_user;
+```
+
+### Backup e restauração
+
+```bash
+pg_dump -U usuario meu_banco > backup.sql
+psql -U usuario -d meu_banco < backup.sql
+```
+
+> 🔒 **Segurança:** use consultas parametrizadas (nunca monte SQL concatenando texto do usuário, isso abre porta para SQL Injection), dê só as permissões necessárias a cada usuário e não deixe senhas no código.
+
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" width="22" height="22" alt="SQLite" />&nbsp; <b>SQLite</b> 😨</summary>
+
+<br>
+
+> Banco de dados leve em um único arquivo
+
+### Linha de comando
+
+```bash
+sqlite3 meu.db        # abre ou cria o banco
+```
+
+| Comando | Ação |
+| --- | --- |
+| `.tables` | Lista as tabelas |
+| `.schema tabela` | Mostra a estrutura |
+| `.headers on` | Mostra os nomes das colunas |
+| `.mode column` | Formata a saída em colunas |
+| `.read script.sql` | Executa um arquivo SQL |
+| `.dump` | Exporta o banco em SQL |
+| `.quit` | Sai |
+
+### Tipos de dados
+
+| Tipo | Uso |
+| --- | --- |
+| `INTEGER` | Números inteiros |
+| `REAL` | Números decimais |
+| `TEXT` | Texto |
+| `BLOB` | Dados binários |
+| `NULL` | Ausência de valor |
+
+### Criar tabela e CRUD
+
+```sql
+PRAGMA foreign_keys = ON;   -- ativa chaves estrangeiras
+
+CREATE TABLE IF NOT EXISTS tarefas (
+    id        INTEGER PRIMARY KEY AUTOINCREMENT,
+    titulo    TEXT NOT NULL,
+    feita     INTEGER DEFAULT 0
+);
+
+INSERT INTO tarefas (titulo) VALUES ('Estudar Docker');
+SELECT * FROM tarefas WHERE feita = 0;
+UPDATE tarefas SET feita = 1 WHERE id = 1;
+DELETE FROM tarefas WHERE id = 1;
+```
+
+### Usando com Python
+
+```python
+import sqlite3
+
+conn = sqlite3.connect("meu.db")
+cur = conn.cursor()
+
+cur.execute("CREATE TABLE IF NOT EXISTS tarefas (id INTEGER PRIMARY KEY, titulo TEXT)")
+
+# SEMPRE use ? para valores (evita SQL Injection)
+cur.execute("INSERT INTO tarefas (titulo) VALUES (?)", ("Estudar SQL",))
+conn.commit()
+
+for linha in cur.execute("SELECT * FROM tarefas WHERE titulo LIKE ?", ("%SQL%",)):
+    print(linha)
+
+conn.close()
+```
+
+> 🔒 Nunca monte a consulta com f-string ou concatenação usando dados de fora. Use sempre os `?` (placeholders).
+
 
 <br>
 
@@ -1129,6 +1528,80 @@ sudo ufw status              # firewall
 </details>
 
 <details>
+<summary><img src="https://cdn.simpleicons.org/kalilinux/557C94" width="22" height="22" alt="Kali Linux" />&nbsp; <b>Kali Linux</b> 😨</summary>
+
+<br>
+
+> Laboratório de segurança: só com autorização e em ambiente seu 🐉
+
+> ⚠️ **Use só em ambientes seus ou com autorização por escrito.** Escanear ou testar sistemas de terceiros sem permissão é crime. O ideal é treinar em laboratório próprio (máquinas virtuais, redes isoladas).
+
+### Atualizar o sistema
+
+```bash
+sudo apt update && sudo apt full-upgrade -y
+sudo apt install kali-linux-default      # conjunto padrão de ferramentas
+```
+
+### Descobrir informações da rede
+
+```bash
+ip a                        # meus IPs
+ip route                    # rotas
+whois exemplo.com
+dig exemplo.com
+nslookup exemplo.com
+```
+
+### Nmap (mapeamento do meu laboratório)
+
+```bash
+nmap 192.168.56.0/24             # descobre hosts da rede de teste
+nmap -sn 192.168.56.0/24         # só verifica quem está ativo
+nmap -p 22,80,443 192.168.56.10  # portas específicas
+nmap -sV 192.168.56.10           # versão dos serviços
+nmap -A 192.168.56.10            # detecção mais completa
+```
+
+### Análise de tráfego
+
+```bash
+sudo tcpdump -i eth0                       # captura no terminal
+sudo tcpdump -i eth0 port 80 -w captura.pcap
+wireshark captura.pcap                     # abre a captura na interface gráfica
+```
+
+### Auditoria e defesa
+
+```bash
+sudo lynis audit system          # auditoria de segurança do sistema
+sudo chkrootkit                  # procura rootkits
+sudo apt install clamav && freshclam && clamscan -r ~/Downloads
+sudo ss -tulpn                   # serviços em escuta
+sudo ufw enable && sudo ufw status
+```
+
+### Hashes e integridade
+
+```bash
+sha256sum arquivo.iso
+md5sum arquivo
+echo -n "texto" | sha256sum
+```
+
+### Dicas
+
+- Use **VM com snapshot**: se quebrar algo, volta ao estado anterior.
+- Deixe o laboratório em rede **isolada** (host-only ou NAT interna).
+- Mantenha anotações do que foi feito (isso vira relatório depois).
+- Para estudar, existem laboratórios legais e gratuitos, como TryHackMe, Hack The Box e DVWA em máquina local.
+
+
+<br>
+
+</details>
+
+<details>
 <summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="22" height="22" alt="Git" />&nbsp; <b>Git</b></summary>
 
 <br>
@@ -1208,6 +1681,125 @@ venv/
 __pycache__/
 *.log
 ```
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.simpleicons.org/github/8B949E" width="22" height="22" alt="GitHub" />&nbsp; <b>GitHub</b> 😨</summary>
+
+<br>
+
+> Onde o código mora, colabora e aparece no perfil 🐙
+
+### Fluxo com Pull Request
+
+```bash
+git clone https://github.com/usuario/repo.git
+git checkout -b minha-feature
+# ...edita os arquivos...
+git add .
+git commit -m "feat: adiciona minha feature"
+git push -u origin minha-feature
+# abre o Pull Request no site (Compare & pull request)
+```
+
+### Fork e atualizar
+
+```bash
+git remote add upstream https://github.com/original/repo.git
+git fetch upstream
+git merge upstream/main
+```
+
+### Chave SSH
+
+```bash
+ssh-keygen -t ed25519 -C "seu@email.com"
+cat ~/.ssh/id_ed25519.pub      # copie e cole em Settings > SSH keys
+ssh -T git@github.com          # testa a conexão
+```
+
+### GitHub CLI (`gh`)
+
+```bash
+gh auth login
+gh repo create meu-repo --public --clone
+gh repo clone usuario/repo
+gh pr create --fill
+gh pr list
+gh issue create
+gh issue list
+```
+
+### Markdown para README
+
+````markdown
+# Título
+## Subtítulo
+
+**negrito**  *itálico*  ~~riscado~~  `código`
+
+- item
+1. item numerado
+- [x] tarefa feita
+- [ ] tarefa pendente
+
+[texto do link](https://exemplo.com)
+![texto alternativo](imagem.png)
+
+> citação
+
+```python
+print("bloco de código")
+```
+
+| Coluna A | Coluna B |
+| --- | --- |
+| 1 | 2 |
+````
+
+### README do perfil
+
+Crie um repositório **com o mesmo nome do seu usuário** (`francyellenn/francyellenn`) e o `README.md` dele aparece no seu perfil.
+
+### Recolher conteúdo no README
+
+```html
+<details>
+<summary>Clique para abrir</summary>
+
+Conteúdo escondido aqui.
+
+</details>
+```
+
+### GitHub Actions (exemplo simples)
+
+```yaml
+# .github/workflows/teste.yml
+name: Testes
+on: [push, pull_request]
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: pytest
+```
+
+### Segurança da conta e do repositório
+
+- Ative a **autenticação em dois fatores (2FA)**.
+- **Nunca** suba senhas, tokens ou arquivos `.env` (use `.gitignore`).
+- Se vazou um segredo, **revogue/troque a chave** na hora (apagar o commit não basta).
+- Ative o **Dependabot** e o **Secret scanning** em Settings > Code security.
+
 
 <br>
 
@@ -1335,6 +1927,102 @@ Atalhos para **Windows** (no Mac, troque `Ctrl` por `Cmd`).
 
 </details>
 
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" width="22" height="22" alt="Postman" />&nbsp; <b>Postman</b> 😨</summary>
+
+<br>
+
+> Testando APIs sem sofrer
+
+### Fazendo uma requisição
+
+1. Clique em **New > HTTP Request**.
+2. Escolha o método (`GET`, `POST`...) e cole a URL.
+3. Configure **Params**, **Headers** ou **Body**.
+4. Clique em **Send** e veja a resposta (status, tempo, corpo).
+
+### Métodos HTTP
+
+| Método | Uso |
+| --- | --- |
+| `GET` | Buscar dados |
+| `POST` | Criar um recurso |
+| `PUT` | Substituir um recurso |
+| `PATCH` | Alterar parte de um recurso |
+| `DELETE` | Remover um recurso |
+
+### Códigos de status
+
+| Código | Significado |
+| --- | --- |
+| `200` | OK |
+| `201` | Criado |
+| `204` | Sem conteúdo |
+| `400` | Requisição inválida |
+| `401` | Não autenticado |
+| `403` | Sem permissão |
+| `404` | Não encontrado |
+| `429` | Muitas requisições |
+| `500` | Erro no servidor |
+
+### Body (JSON)
+
+Em **Body > raw > JSON**:
+
+```json
+{
+  "nome": "Fran",
+  "email": "fran@email.com"
+}
+```
+
+E em **Headers**: `Content-Type: application/json`
+
+### Autenticação
+
+- **Authorization > Bearer Token**: cole o token de acesso.
+- **Basic Auth**: usuário e senha.
+- **API Key**: envia em header ou query.
+
+### Variáveis e ambientes
+
+```text
+{{base_url}}/usuarios
+{{token}}
+```
+
+Crie um **Environment** (ex.: Local, Produção) com `base_url`, `token` etc. Assim você troca de ambiente sem editar cada requisição.
+
+> 🔒 Guarde tokens e senhas em variáveis de ambiente do Postman e **não compartilhe** coleções com segredos dentro.
+
+### Testes (aba Tests)
+
+```javascript
+pm.test("Status é 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Retorna um nome", function () {
+    const dados = pm.response.json();
+    pm.expect(dados.nome).to.be.a("string");
+});
+
+// salvar valor para a próxima requisição
+pm.environment.set("token", pm.response.json().token);
+```
+
+### Newman (rodar coleções no terminal)
+
+```bash
+npm install -g newman
+newman run minha-colecao.json -e ambiente.json
+```
+
+
+<br>
+
+</details>
+
 ## 🔗 Links úteis
 
 - [MDN Web Docs](https://developer.mozilla.org/pt-BR/) — HTML, CSS e JavaScript
@@ -1345,6 +2033,14 @@ Atalhos para **Windows** (no Mac, troque `Ctrl` por `Cmd`).
 - [Pro Git (PT-BR)](https://git-scm.com/book/pt-br/v2)
 - [VS Code Shortcuts (PDF)](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
 - [Atalhos do Figma](https://help.figma.com/hc/pt-br/articles/360040328653)
+- [Documentação do PostgreSQL](https://www.postgresql.org/docs/)
+- [Documentação do SQLite](https://www.sqlite.org/docs.html)
+- [Documentação do Docker](https://docs.docker.com/)
+- [Documentação do Kali Linux](https://www.kali.org/docs/)
+- [Documentação do GitHub](https://docs.github.com/pt)
+- [Documentação do Postman](https://learning.postman.com/docs/)
+- [R para Ciência de Dados (livro gratuito)](https://r4ds.hadley.nz/)
+- [Beej's Guide to C](https://beej.us/guide/bgc/)
 
 <br>
 
@@ -1352,7 +2048,7 @@ Atalhos para **Windows** (no Mac, troque `Ctrl` por `Cmd`).
 
 🟪🟪🟦🟦🟪🟪🟦🟦🟪🟪🟦🟦🟪🟪🟦🟦
 
-**Feito com ☕ e muita curiosidade por [Francyellen Pimenta](https://github.com/francyellenn)**
+**Feito com ☕, pixel art 👾 e muita curiosidade por [Francyellen Pimenta](https://github.com/francyellenn)**
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:8DA2F0,100:B794F0" alt="" />
 
