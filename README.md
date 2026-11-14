@@ -31,7 +31,7 @@ São simplesmente **colinhas** de códigos e atalhos das tecnologias do meu Tech
 <br>
 
 <details>
-<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="22" height="22" alt="Python" />&nbsp; <b>Python</b> 💪</summary>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="22" height="22" alt="Python" />&nbsp; <b>Python</b> 🩷</summary>
 
 <br>
 
@@ -1528,7 +1528,7 @@ sudo ufw status              # firewall
 </details>
 
 <details>
-<summary><img src="https://cdn.simpleicons.org/kalilinux/557C94" width="22" height="22" alt="Kali Linux" />&nbsp; <b>Kali Linux</b> 😨</summary>
+<summary><img src="https://cdn.simpleicons.org/kalilinux/557C94" width="22" height="22" alt="Kali Linux" />&nbsp; <b>Kali Linux</b> 🩷</summary>
 
 <br>
 
@@ -1687,7 +1687,7 @@ __pycache__/
 </details>
 
 <details>
-<summary><img src="https://cdn.simpleicons.org/github/8B949E" width="22" height="22" alt="GitHub" />&nbsp; <b>GitHub</b> 😨</summary>
+<summary><img src="https://cdn.simpleicons.org/github/8B949E" width="22" height="22" alt="GitHub" />&nbsp; <b>GitHub</b> </summary>
 
 <br>
 
