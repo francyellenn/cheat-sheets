@@ -1,495 +1,41 @@
-# 📚 Folhas de Consulta
-
-Colinhas rápidas de códigos e atalhos das tecnologias que eu uso e estudo.
-
-## 🗂️ Índice
-
-- [HTML5](#-html5)
-- [CSS3](#-css3)
-- [JavaScript](#-javascript)
-- [TypeScript](#-typescript)
-- [React](#️-react)
-- [Node.js](#-nodejs)
-- [Python](#-python)
-- [Java](#-java)
-- [Docker](#-docker)
-- [Bash](#-bash)
-- [Linux](#-linux)
-- [Git](#-git)
-- [VS Code](#-vs-code)
-- [Figma](#-figma)
-
----
-
-## 🟧 HTML5
-
-### Estrutura básica
-
-```html
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Título da página</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <script src="script.js"></script>
-  </body>
-</html>
-```
-
-### Tags mais usadas
-
-| Tag | Uso |
-| --- | --- |
-| `<h1>` a `<h6>` | Títulos |
-| `<p>` | Parágrafo |
-| `<a href="">` | Link |
-| `<img src="" alt="">` | Imagem |
-| `<ul>` / `<ol>` / `<li>` | Listas |
-| `<div>` / `<span>` | Contêineres (bloco / em linha) |
-| `<button>` | Botão |
-| `<table>`, `<tr>`, `<td>`, `<th>` | Tabelas |
-
-### Tags semânticas
-
-```html
-<header></header>
-<nav></nav>
-<main>
-  <section></section>
-  <article></article>
-  <aside></aside>
-</main>
-<footer></footer>
-```
-
-### Formulário
-
-```html
-<form action="/enviar" method="post">
-  <label for="nome">Nome</label>
-  <input type="text" id="nome" name="nome" required />
-
-  <input type="email" name="email" placeholder="seu@email.com" />
-  <input type="password" name="senha" />
-  <input type="checkbox" name="aceito" />
-  <input type="radio" name="opcao" value="a" />
-
-  <select name="curso">
-    <option value="ciber">Cibersegurança</option>
-  </select>
-
-  <textarea name="msg" rows="4"></textarea>
-  <button type="submit">Enviar</button>
-</form>
-```
-
----
-
-## 🟦 CSS3
-
-### Seletores
-
-```css
-p { }              /* tag */
-.classe { }        /* classe */
-#id { }            /* id */
-a:hover { }        /* pseudo-classe */
-p::first-line { }  /* pseudo-elemento */
-div > p { }        /* filho direto */
-div p { }          /* descendente */
-h1, h2 { }         /* agrupamento */
-input[type="text"] { }  /* atributo */
-```
-
-### Box model
-
-```css
-* {
-  box-sizing: border-box;
-}
-
-.caixa {
-  width: 300px;
-  padding: 16px;
-  border: 1px solid #ccc;
-  margin: 0 auto;
-}
-```
-
-### Flexbox
-
-```css
-.container {
-  display: flex;
-  flex-direction: row;          /* row | column */
-  justify-content: center;      /* eixo principal */
-  align-items: center;          /* eixo transversal */
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.item {
-  flex: 1;
-}
-```
-
-### Grid
-
-```css
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.grid-auto {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-```
-
-### Variáveis, media query e animação
-
-```css
-:root {
-  --cor-principal: #8b9ff0;
-}
-
-.botao {
-  background: var(--cor-principal);
-  transition: transform 0.2s;
-}
-.botao:hover {
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .grid { grid-template-columns: 1fr; }
-}
-
-@keyframes pulsar {
-  from { opacity: 1; }
-  to   { opacity: 0.4; }
-}
-.pulsando {
-  animation: pulsar 1s infinite alternate;
-}
-```
-
----
-
-## 🟨 JavaScript
-
-### Variáveis e tipos
-
-```js
-const nome = "Francyellen";   // não pode ser reatribuída
-let idade = 20;               // pode ser reatribuída
-
-typeof nome;   // "string"
-Number("42");  // 42
-String(42);    // "42"
-```
-
-### Funções
-
-```js
-function somar(a, b) {
-  return a + b;
-}
-
-const subtrair = (a, b) => a - b;
-const dobro = (n) => n * 2;
-```
-
-### Arrays
-
-```js
-const nums = [1, 2, 3, 4];
-
-nums.push(5);                      // adiciona no fim
-nums.pop();                        // remove do fim
-nums.map((n) => n * 2);            // [2, 4, 6, 8]
-nums.filter((n) => n % 2 === 0);   // [2, 4]
-nums.reduce((acc, n) => acc + n, 0); // soma
-nums.find((n) => n > 2);           // 3
-nums.includes(3);                  // true
-[...nums, 10];                     // spread
-```
-
-### Objetos e desestruturação
-
-```js
-const pessoa = { nome: "Fran", area: "Ciber" };
-
-const { nome, area } = pessoa;
-const copia = { ...pessoa, idade: 20 };
-
-Object.keys(pessoa);
-Object.values(pessoa);
-Object.entries(pessoa);
-```
-
-### DOM
-
-```js
-const el = document.querySelector(".classe");
-const todos = document.querySelectorAll("li");
-
-el.textContent = "Olá!";
-el.classList.add("ativo");
-el.classList.toggle("oculto");
-el.addEventListener("click", () => console.log("clicou"));
-
-const novo = document.createElement("p");
-document.body.appendChild(novo);
-```
-
-### Async / Fetch
-
-```js
-async function buscarDados() {
-  try {
-    const resposta = await fetch("https://api.exemplo.com/dados");
-    const dados = await resposta.json();
-    console.log(dados);
-  } catch (erro) {
-    console.error(erro);
-  }
-}
-```
-
-### Úteis
-
-```js
-`Olá, ${nome}!`;          // template string
-valor ?? "padrão";        // nullish coalescing
-objeto?.propriedade;      // optional chaining
-JSON.stringify(obj);
-JSON.parse(texto);
-```
-
----
-
-## 🔷 TypeScript
-
-### Tipos básicos
-
-```ts
-let nome: string = "Fran";
-let idade: number = 20;
-let ativo: boolean = true;
-let lista: number[] = [1, 2, 3];
-let tupla: [string, number] = ["a", 1];
-let qualquer: unknown;           // prefira unknown a any
-```
-
-### Interface e type
-
-```ts
-interface Usuario {
-  id: number;
-  nome: string;
-  email?: string;          // opcional
-  readonly criadoEm: Date; // somente leitura
-}
-
-type Status = "ativo" | "inativo" | "pendente"; // union
-type ID = string | number;
-```
-
-### Funções tipadas
-
-```ts
-function somar(a: number, b: number): number {
-  return a + b;
-}
-
-const saudacao = (nome: string): void => {
-  console.log(`Olá, ${nome}`);
-};
-```
-
-### Generics
-
-```ts
-function primeiro<T>(lista: T[]): T {
-  return lista[0];
-}
-
-primeiro<number>([1, 2, 3]);
-```
-
-### Utilitários
-
-```ts
-Partial<Usuario>;            // todos opcionais
-Required<Usuario>;           // todos obrigatórios
-Pick<Usuario, "id" | "nome">;
-Omit<Usuario, "email">;
-Record<string, number>;
-```
-
-### Comandos
-
-```bash
-npm install -D typescript
-npx tsc --init     # cria o tsconfig.json
-npx tsc            # compila
-npx tsc --watch    # compila ao salvar
-```
-
----
-
-## ⚛️ React
-
-### Componente
-
-```jsx
-function Cartao({ titulo, children }) {
-  return (
-    <div className="cartao">
-      <h2>{titulo}</h2>
-      {children}
-    </div>
-  );
-}
-
-export default Cartao;
-```
-
-### Hooks principais
-
-```jsx
-import { useState, useEffect, useRef, useMemo } from "react";
-
-function Contador() {
-  const [count, setCount] = useState(0);
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    document.title = `Cliques: ${count}`;
-    return () => {};      // limpeza (opcional)
-  }, [count]);            // roda quando count muda
-
-  const dobro = useMemo(() => count * 2, [count]);
-
-  return (
-    <button onClick={() => setCount(count + 1)}>
-      {count} (dobro: {dobro})
-    </button>
-  );
-}
-```
-
-### Renderização condicional e listas
-
-```jsx
-{logado ? <Painel /> : <Login />}
-{erro && <p>{erro}</p>}
-
-<ul>
-  {itens.map((item) => (
-    <li key={item.id}>{item.nome}</li>
-  ))}
-</ul>
-```
-
-### Eventos e formulários
-
-```jsx
-const [texto, setTexto] = useState("");
-
-<input value={texto} onChange={(e) => setTexto(e.target.value)} />
-
-<form onSubmit={(e) => { e.preventDefault(); /* ... */ }}>
-```
-
-### Criar projeto
-
-```bash
-npm create vite@latest meu-app -- --template react
-cd meu-app
-npm install
-npm run dev
-```
-
----
-
-## 🟩 Node.js
-
-### Comandos
-
-```bash
-node -v                  # versão
-node arquivo.js          # executar
-npm init -y              # criar package.json
-npm install pacote       # instalar
-npm install -D pacote    # dependência de dev
-npm uninstall pacote
-npm run script
-npx pacote               # executar sem instalar
-```
-
-### Módulos
-
-```js
-// CommonJS
-const fs = require("fs");
-module.exports = { funcao };
-
-// ES Modules (package.json: "type": "module")
-import fs from "fs";
-export const funcao = () => {};
-```
-
-### Arquivos (fs)
-
-```js
-import { readFile, writeFile } from "fs/promises";
-
-const texto = await readFile("arquivo.txt", "utf-8");
-await writeFile("saida.txt", "conteúdo");
-```
-
-### Servidor com Express
-
-```bash
-npm install express
-```
-
-```js
-import express from "express";
-
-const app = express();
-app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.send("Olá, mundo!");
-});
-
-app.post("/usuarios", (req, res) => {
-  const { nome } = req.body;
-  res.status(201).json({ nome });
-});
-
-app.listen(3000, () => console.log("Rodando na porta 3000"));
-```
-
-### Variáveis de ambiente
-
-```js
-const porta = process.env.PORT || 3000;
-```
-
-> 🔒 Nunca suba o arquivo `.env` para o GitHub. Adicione-o ao `.gitignore`.
-
----
-
-## 🐍 Python
+<div align="center">
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=230&section=header&text=Folhas%20de%20Consulta&fontSize=52&fontColor=ffffff&fontAlignY=40&desc=colinhas%20de%20c%C3%B3digos%20e%20atalhos&descAlignY=60&descSize=20&color=0:8DA2F0,100:B794F0" alt="Folhas de Consulta" />
+
+<i>"A lógica levará você de A a B. A imaginação levará você a qualquer lugar"</i>
+
+<br><br>
+
+<img src="https://img.shields.io/badge/Defesa_Cibern%C3%A9tica-8DA2F0?style=for-the-badge&logo=linux&logoColor=white" alt="Defesa Cibernética" />
+<img src="https://img.shields.io/badge/Foco-Python-B794F0?style=for-the-badge&logo=python&logoColor=white" alt="Foco: Python" />
+<img src="https://img.shields.io/badge/Aprendendo-TypeScript_%7C_Docker_%7C_Backend-8DA2F0?style=for-the-badge&logo=typescript&logoColor=white" alt="Aprendendo" />
+
+<br><br>
+
+<img src="https://skillicons.dev/icons?i=python,java,html,css,js,ts,react,nodejs,docker,bash,linux,git,vscode,figma&perline=14" alt="Tech Arsenal" />
+
+<br>
+
+🟦🟦🟪🟪🟦🟦🟪🟪🟦🟦🟪🟪🟦🟦🟪🟪
+
+</div>
+
+## 👾 O que é isso?
+
+São simplesmente **colinhas** de códigos e atalhos das tecnologias do meu Tech Arsenal: aquele material de consulta rápida para quando a memória falha (e ela falha, principalmente antes do café ☕).
+
+> 💡 **Como usar:** clique na seta ▶️ de cada tecnologia para abrir a colinha.
+>
+> 💪 = tecnologia que eu já domino mais &nbsp;|&nbsp; 🌱 = ainda aprendendo
+
+<br>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="22" height="22" alt="Python" />&nbsp; <b>Python</b> 💪</summary>
+
+<br>
+
+> Minha base para defesa cibernética e análise de vulnerabilidades 🛡️
 
 ### Básico
 
@@ -593,9 +139,16 @@ hashlib.sha256(b"texto").hexdigest()
 
 > ⚠️ Use ferramentas de análise de vulnerabilidades apenas em sistemas seus ou com autorização expressa.
 
----
+<br>
 
-## ☕ Java
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="22" height="22" alt="Java" />&nbsp; <b>Java</b></summary>
+
+<br>
+
+> Orientação a objetos e muita xícara de café ☕
 
 ### Estrutura básica
 
@@ -731,9 +284,526 @@ String entrada = sc.nextLine();
 int numero = sc.nextInt();
 ```
 
----
+<br>
 
-## 🐳 Docker
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="22" height="22" alt="HTML5" />&nbsp; <b>HTML5</b> 💪</summary>
+
+<br>
+
+> O esqueleto de toda página web
+
+### Estrutura básica
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Título da página</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+
+### Tags mais usadas
+
+| Tag | Uso |
+| --- | --- |
+| `<h1>` a `<h6>` | Títulos |
+| `<p>` | Parágrafo |
+| `<a href="">` | Link |
+| `<img src="" alt="">` | Imagem |
+| `<ul>` / `<ol>` / `<li>` | Listas |
+| `<div>` / `<span>` | Contêineres (bloco / em linha) |
+| `<button>` | Botão |
+| `<table>`, `<tr>`, `<td>`, `<th>` | Tabelas |
+
+### Tags semânticas
+
+```html
+<header></header>
+<nav></nav>
+<main>
+  <section></section>
+  <article></article>
+  <aside></aside>
+</main>
+<footer></footer>
+```
+
+### Formulário
+
+```html
+<form action="/enviar" method="post">
+  <label for="nome">Nome</label>
+  <input type="text" id="nome" name="nome" required />
+
+  <input type="email" name="email" placeholder="seu@email.com" />
+  <input type="password" name="senha" />
+  <input type="checkbox" name="aceito" />
+  <input type="radio" name="opcao" value="a" />
+
+  <select name="curso">
+    <option value="ciber">Cibersegurança</option>
+  </select>
+
+  <textarea name="msg" rows="4"></textarea>
+  <button type="submit">Enviar</button>
+</form>
+```
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="22" height="22" alt="CSS3" />&nbsp; <b>CSS3</b> 💪</summary>
+
+<br>
+
+> Onde a mágica (e o gradiente) acontece 🎨
+
+### Seletores
+
+```css
+p { }              /* tag */
+.classe { }        /* classe */
+#id { }            /* id */
+a:hover { }        /* pseudo-classe */
+p::first-line { }  /* pseudo-elemento */
+div > p { }        /* filho direto */
+div p { }          /* descendente */
+h1, h2 { }         /* agrupamento */
+input[type="text"] { }  /* atributo */
+```
+
+### Box model
+
+```css
+* {
+  box-sizing: border-box;
+}
+
+.caixa {
+  width: 300px;
+  padding: 16px;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+}
+```
+
+### Flexbox
+
+```css
+.container {
+  display: flex;
+  flex-direction: row;          /* row | column */
+  justify-content: center;      /* eixo principal */
+  align-items: center;          /* eixo transversal */
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.item {
+  flex: 1;
+}
+```
+
+### Grid
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.grid-auto {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+```
+
+### Variáveis, media query e animação
+
+```css
+:root {
+  --cor-principal: #8b9ff0;
+}
+
+.botao {
+  background: var(--cor-principal);
+  transition: transform 0.2s;
+}
+.botao:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+@keyframes pulsar {
+  from { opacity: 1; }
+  to   { opacity: 0.4; }
+}
+.pulsando {
+  animation: pulsar 1s infinite alternate;
+}
+```
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="22" height="22" alt="JavaScript" />&nbsp; <b>JavaScript</b> 💪</summary>
+
+<br>
+
+> Dando vida e lógica às páginas
+
+### Variáveis e tipos
+
+```js
+const nome = "Francyellen";   // não pode ser reatribuída
+let idade = 20;               // pode ser reatribuída
+
+typeof nome;   // "string"
+Number("42");  // 42
+String(42);    // "42"
+```
+
+### Funções
+
+```js
+function somar(a, b) {
+  return a + b;
+}
+
+const subtrair = (a, b) => a - b;
+const dobro = (n) => n * 2;
+```
+
+### Arrays
+
+```js
+const nums = [1, 2, 3, 4];
+
+nums.push(5);                      // adiciona no fim
+nums.pop();                        // remove do fim
+nums.map((n) => n * 2);            // [2, 4, 6, 8]
+nums.filter((n) => n % 2 === 0);   // [2, 4]
+nums.reduce((acc, n) => acc + n, 0); // soma
+nums.find((n) => n > 2);           // 3
+nums.includes(3);                  // true
+[...nums, 10];                     // spread
+```
+
+### Objetos e desestruturação
+
+```js
+const pessoa = { nome: "Fran", area: "Ciber" };
+
+const { nome, area } = pessoa;
+const copia = { ...pessoa, idade: 20 };
+
+Object.keys(pessoa);
+Object.values(pessoa);
+Object.entries(pessoa);
+```
+
+### DOM
+
+```js
+const el = document.querySelector(".classe");
+const todos = document.querySelectorAll("li");
+
+el.textContent = "Olá!";
+el.classList.add("ativo");
+el.classList.toggle("oculto");
+el.addEventListener("click", () => console.log("clicou"));
+
+const novo = document.createElement("p");
+document.body.appendChild(novo);
+```
+
+### Async / Fetch
+
+```js
+async function buscarDados() {
+  try {
+    const resposta = await fetch("https://api.exemplo.com/dados");
+    const dados = await resposta.json();
+    console.log(dados);
+  } catch (erro) {
+    console.error(erro);
+  }
+}
+```
+
+### Úteis
+
+```js
+`Olá, ${nome}!`;          // template string
+valor ?? "padrão";        // nullish coalescing
+objeto?.propriedade;      // optional chaining
+JSON.stringify(obj);
+JSON.parse(texto);
+```
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="22" height="22" alt="TypeScript" />&nbsp; <b>TypeScript</b> 🌱</summary>
+
+<br>
+
+> JavaScript com superpoderes de tipagem
+
+### Tipos básicos
+
+```ts
+let nome: string = "Fran";
+let idade: number = 20;
+let ativo: boolean = true;
+let lista: number[] = [1, 2, 3];
+let tupla: [string, number] = ["a", 1];
+let qualquer: unknown;           // prefira unknown a any
+```
+
+### Interface e type
+
+```ts
+interface Usuario {
+  id: number;
+  nome: string;
+  email?: string;          // opcional
+  readonly criadoEm: Date; // somente leitura
+}
+
+type Status = "ativo" | "inativo" | "pendente"; // union
+type ID = string | number;
+```
+
+### Funções tipadas
+
+```ts
+function somar(a: number, b: number): number {
+  return a + b;
+}
+
+const saudacao = (nome: string): void => {
+  console.log(`Olá, ${nome}`);
+};
+```
+
+### Generics
+
+```ts
+function primeiro<T>(lista: T[]): T {
+  return lista[0];
+}
+
+primeiro<number>([1, 2, 3]);
+```
+
+### Utilitários
+
+```ts
+Partial<Usuario>;            // todos opcionais
+Required<Usuario>;           // todos obrigatórios
+Pick<Usuario, "id" | "nome">;
+Omit<Usuario, "email">;
+Record<string, number>;
+```
+
+### Comandos
+
+```bash
+npm install -D typescript
+npx tsc --init     # cria o tsconfig.json
+npx tsc            # compila
+npx tsc --watch    # compila ao salvar
+```
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="22" height="22" alt="React" />&nbsp; <b>React</b></summary>
+
+<br>
+
+> Interfaces feitas de componentes
+
+### Componente
+
+```jsx
+function Cartao({ titulo, children }) {
+  return (
+    <div className="cartao">
+      <h2>{titulo}</h2>
+      {children}
+    </div>
+  );
+}
+
+export default Cartao;
+```
+
+### Hooks principais
+
+```jsx
+import { useState, useEffect, useRef, useMemo } from "react";
+
+function Contador() {
+  const [count, setCount] = useState(0);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    document.title = `Cliques: ${count}`;
+    return () => {};      // limpeza (opcional)
+  }, [count]);            // roda quando count muda
+
+  const dobro = useMemo(() => count * 2, [count]);
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      {count} (dobro: {dobro})
+    </button>
+  );
+}
+```
+
+### Renderização condicional e listas
+
+```jsx
+{logado ? <Painel /> : <Login />}
+{erro && <p>{erro}</p>}
+
+<ul>
+  {itens.map((item) => (
+    <li key={item.id}>{item.nome}</li>
+  ))}
+</ul>
+```
+
+### Eventos e formulários
+
+```jsx
+const [texto, setTexto] = useState("");
+
+<input value={texto} onChange={(e) => setTexto(e.target.value)} />
+
+<form onSubmit={(e) => { e.preventDefault(); /* ... */ }}>
+```
+
+### Criar projeto
+
+```bash
+npm create vite@latest meu-app -- --template react
+cd meu-app
+npm install
+npm run dev
+```
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="22" height="22" alt="Node.js" />&nbsp; <b>Node.js</b></summary>
+
+<br>
+
+> JavaScript no servidor: o caminho para o backend
+
+### Comandos
+
+```bash
+node -v                  # versão
+node arquivo.js          # executar
+npm init -y              # criar package.json
+npm install pacote       # instalar
+npm install -D pacote    # dependência de dev
+npm uninstall pacote
+npm run script
+npx pacote               # executar sem instalar
+```
+
+### Módulos
+
+```js
+// CommonJS
+const fs = require("fs");
+module.exports = { funcao };
+
+// ES Modules (package.json: "type": "module")
+import fs from "fs";
+export const funcao = () => {};
+```
+
+### Arquivos (fs)
+
+```js
+import { readFile, writeFile } from "fs/promises";
+
+const texto = await readFile("arquivo.txt", "utf-8");
+await writeFile("saida.txt", "conteúdo");
+```
+
+### Servidor com Express
+
+```bash
+npm install express
+```
+
+```js
+import express from "express";
+
+const app = express();
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Olá, mundo!");
+});
+
+app.post("/usuarios", (req, res) => {
+  const { nome } = req.body;
+  res.status(201).json({ nome });
+});
+
+app.listen(3000, () => console.log("Rodando na porta 3000"));
+```
+
+### Variáveis de ambiente
+
+```js
+const porta = process.env.PORT || 3000;
+```
+
+> 🔒 Nunca suba o arquivo `.env` para o GitHub. Adicione-o ao `.gitignore`.
+
+<br>
+
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="22" height="22" alt="Docker" />&nbsp; <b>Docker</b> 🌱</summary>
+
+<br>
+
+> Contêineres: funciona na minha máquina e na sua 🐳
 
 ### Imagens e contêineres
 
@@ -831,9 +901,16 @@ docker image prune
 
 > 🔒 Não coloque senhas e chaves dentro do Dockerfile ou da imagem. Use variáveis de ambiente ou secrets.
 
----
+<br>
 
-## 🐚 Bash
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" width="22" height="22" alt="Bash" />&nbsp; <b>Bash</b></summary>
+
+<br>
+
+> Automatizando o terminal
 
 ### Básico
 
@@ -928,9 +1005,16 @@ comando1 || comando2       # executa o 2º se o 1º falhar
 | `Tab` | Autocompleta |
 | `!!` | Repete o último comando |
 
----
+<br>
 
-## 🐧 Linux
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="22" height="22" alt="Linux" />&nbsp; <b>Linux</b></summary>
+
+<br>
+
+> Casa de quem trabalha com segurança 🐧
 
 ### Navegação e arquivos
 
@@ -1040,9 +1124,16 @@ sudo tail -f /var/log/auth.log   # tentativas de login
 sudo ufw status              # firewall
 ```
 
----
+<br>
 
-## 🔴 Git
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="22" height="22" alt="Git" />&nbsp; <b>Git</b></summary>
+
+<br>
+
+> A máquina do tempo do código
 
 ### Configuração inicial
 
@@ -1118,9 +1209,16 @@ __pycache__/
 *.log
 ```
 
----
+<br>
 
-## 💙 VS Code
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="22" height="22" alt="VS Code" />&nbsp; <b>VS Code</b></summary>
+
+<br>
+
+> Meu editor: atalhos que poupam tempo
 
 Atalhos para **Windows** (no Mac, troque `Ctrl` por `Cmd`).
 
@@ -1174,9 +1272,16 @@ Atalhos para **Windows** (no Mac, troque `Ctrl` por `Cmd`).
 - **Live Server** (servidor local com recarregamento)
 - **Material Icon Theme** (ícones de arquivos)
 
----
+<br>
 
-## 🎨 Figma
+</details>
+
+<details>
+<summary><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="22" height="22" alt="Figma" />&nbsp; <b>Figma</b></summary>
+
+<br>
+
+> Design de interfaces e protótipos
 
 ### Ferramentas
 
@@ -1226,7 +1331,9 @@ Atalhos para **Windows** (no Mac, troque `Ctrl` por `Cmd`).
 - Use **Auto Layout** (`Shift + A`) para criar interfaces responsivas.
 - Use **Componentes** e **Variantes** para reaproveitar elementos.
 
----
+<br>
+
+</details>
 
 ## 🔗 Links úteis
 
@@ -1238,3 +1345,15 @@ Atalhos para **Windows** (no Mac, troque `Ctrl` por `Cmd`).
 - [Pro Git (PT-BR)](https://git-scm.com/book/pt-br/v2)
 - [VS Code Shortcuts (PDF)](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
 - [Atalhos do Figma](https://help.figma.com/hc/pt-br/articles/360040328653)
+
+<br>
+
+<div align="center">
+
+🟪🟪🟦🟦🟪🟪🟦🟦🟪🟪🟦🟦🟪🟪🟦🟦
+
+**Feito com ☕ e muita curiosidade por [Francyellen Pimenta](https://github.com/francyellenn)**
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:8DA2F0,100:B794F0" alt="" />
+
+</div>
